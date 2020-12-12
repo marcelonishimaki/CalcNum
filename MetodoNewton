@@ -7,14 +7,14 @@
  do tipo ax^2+bx+c */
 
 /* Calculo de f(x) */
- int f(int a, int b, int c, int x){
+ int f(int a, int b, int c, double x){
  	int f;
  	f = a*pow(x,2)+b*x+c;
  return f;
  }
 
 /* Calculo de f'(x) */
- int flinha(int a, int b, int x){
+ int flinha(int a, int b, double x){
  	int flinha;
  	flinha = 2*a*x + b;
  return flinha;
@@ -23,7 +23,8 @@
 
  int main(){
  	/* declaracao das variaveis */
- 	int a,b,c,chute,x1,x,n,i;
+ 	int a,b,c,chute,x1,n,i;
+ 	double x;
  	/* entrada dos valores */
  	printf("Insira a, b e c respectivamente: \n");
  	scanf("%d %d %d", &a, &b, &c);
@@ -40,7 +41,8 @@
  	} else 
  		for(i=0;i<n;i++){
  		x = x - f(a,b,c,x)/flinha(a,b,x);
+ 		printf("%lf\n", x);
  	}
- 	printf("raiz:%d", x);
+ 	printf("raiz:%lf", x);
  return 0;
  }
