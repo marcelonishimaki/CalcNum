@@ -1,0 +1,46 @@
+/* Metodo de Newton-Raphson */
+
+#include <stdio.h>
+#include <math.h>
+
+/* Para polinomios de segundo grau 
+ do tipo ax^2+bx+c */
+
+/* Calculo de f(x) */
+ int f(int a, int b, int c, int x){
+ 	int f;
+ 	f = a*pow(x,2)+b*x+c;
+ return f;
+ }
+
+/* Calculo de f'(x) */
+ int flinha(int a, int b, int x){
+ 	int flinha;
+ 	flinha = 2*a*x + b;
+ return flinha;
+ }
+
+
+ int main(){
+ 	/* declaracao das variaveis */
+ 	int a,b,c,chute,x1,x,n,i;
+ 	/* entrada dos valores */
+ 	printf("Insira a, b e c respectivamente: \n");
+ 	scanf("%d %d %d", &a, &b, &c);
+ 	printf("Insira o chute inicial: \n");
+ 	scanf("%d", &chute);
+ 	printf("Insira o numero de repeticoes do metodo: \n");
+ 	scanf("%d", &n);
+ 	/* Inicio do metodo de Newton */
+ 	x1 = chute - f(a,b,c,chute)/flinha(a,b,chute);
+ 	x = x1 - f(a,b,c,x1)/flinha(a,b,x1);
+ 	if (x> x1){
+ 		printf("Diverge da raiz\n");
+ 		return 0;
+ 	} else 
+ 		for(i=0;i<n;i++){
+ 		x = x - f(a,b,c,x)/flinha(a,b,x);
+ 	}
+ 	printf("raiz:%d", x);
+ return 0;
+ }
